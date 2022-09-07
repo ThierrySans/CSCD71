@@ -4,7 +4,7 @@ layout: home
 
 ## Prerequisite
 
-This course requires a good understanding of web development in general (CSCC09).
+This course requires a good understanding of web development (CSCC09 recommended).
 
 ## Course Staff
 
