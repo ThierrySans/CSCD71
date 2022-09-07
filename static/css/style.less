@@ -1,0 +1,242 @@
+@import "../../node_modules/bootstrap-less/bootstrap/bootstrap.less";
+
+@base-color:   #009900;
+@light-color: #e6ffe6;
+
+@brand-primary: @base-color;
+@jumbotron-bg: @light-color;
+
+@navbar-default-bg: white;
+
+@dropdown-bg: white;
+@dropdown-link-color: @navbar-default-link-color;
+@dropdown-link-hover-color: @navbar-default-link-hover-color;
+@dropdown-link-hover-bg: @light-color;
+
+@navbar-default-link-active-bg: @light-color;
+
+.light{
+    color: @base-color;
+}
+
+.em{
+    color: red !important;
+}
+
+.odd{
+    background-color:@light-color;
+}
+
+body {
+    min-height: auto;
+    padding-top: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+}
+
+footer{
+    margin: 0px auto;
+    margin-top: 20px;
+    max-width: 800px;
+}
+
+p, ul{
+	line-height: 180%;
+}
+
+.navbar{
+    padding-top:25px;
+}
+
+
+.navbar-toggle{
+    line-height: 0;
+    padding: 4px 8px;
+}
+
+#utsc_logo{
+    margin-top:-25px;
+    max-height:50px;
+    height: auto;
+}
+
+#content{
+    margin-top:50px;
+	min-height: 200px;
+    overflow-x: scroll;
+}
+
+#header{
+    .jumbotron();
+    h1{
+        font-size: 20px;
+    }
+    @media screen and (min-width: @screen-sm-min) {
+        h1{
+            font-size: 42px;
+        }
+    }
+    p{
+        font-size: 14px;
+    }
+    @media screen and (min-width: @screen-sm-min) {
+        p{
+            font-size: 21px;
+        }
+    }
+    #instructor {
+      display: flex;
+      font-size: @jumbotron-font-size;
+
+      div:first-child{
+        flex-grow: 1;
+        font-weight:bold;
+      }
+      div:last-child {
+        flex-grow: 5;
+      }
+    }
+}
+
+#main{
+    .make-row();
+    #syllabus{
+        .make-xs-column(12);
+    }
+}
+
+.screenshot{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 800px;
+    height: auto;
+}
+
+.post{
+        .make-row();
+        border-collapse: collapse;
+        padding-top:10px;
+        padding-bottom:10px;
+        border-bottom: 1px solid @gray-light;
+        .date{
+            .make-xs-column(2);
+        }
+        .title{
+             .make-xs-column(10);
+             font-weight: bold;
+             color: @base-color;
+        }
+        .content{
+             .make-xs-column-offset(2);
+             .make-xs-column(10);
+        }
+}
+
+.grid{
+    margin-top:20px;
+    margin-bottom:20px;
+    .hrow{
+        font-weight: bold;
+        border-bottom: 1px solid #999;
+    }
+    .brow{
+        font-weight: bold;
+        border-top: 1px solid #999;
+    }
+    .row{
+        .make-row();
+        margin-top:5px;
+        .hcolumn{
+             font-weight: bold;
+        }
+        .column1{
+             .make-xs-column(1);
+        }
+        .column2{
+             .make-xs-column(2);
+        }
+        .column3{
+             .make-xs-column(3);
+        }
+        .column4{
+             .make-xs-column(4);
+        }
+    }
+
+}
+
+.week{
+    .make-row();
+    border-collapse: collapse;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-bottom: 1px solid @gray-light;
+    .week_id{
+        .make-xs-column(1);
+    }
+    .date{
+        .make-xs-column(1);
+    }
+    .topic{
+         .make-xs-column(4);
+         font-weight: bold;
+         color: @base-color;
+    }
+    ul{
+        line-height: 120%;
+        padding: 0pt;
+    }
+    .notes, .lab, .hw, .project{
+         .make-xs-column(3);
+    }
+    .readings{
+        .make-xs-column(3);
+    }
+}
+
+.hrow{
+        font-weight: bold;
+        border-bottom: 1px solid #999;
+        .topic{
+            color: inherit;
+        }
+}
+
+.book{
+    .make-row();
+    margin-top:20px;
+    margin-bottom:20px;
+    img{
+         .make-xs-column(2);
+         width:100px;
+    }
+    .description{
+         .make-xs-column(10);
+         margin-top:20px;
+         .title{
+             font-weight: bold;
+         }
+         .editor
+         {
+         	font-style: italic;
+         }
+    }
+}
+
+.feedEkList{
+    // width:450px;
+    list-style:none outside none;
+    background-color:#FFFFFF;
+    border:1px solid @gray-light;
+    padding:4px 6px;
+    color:#3E3E3E;
+    li{border-bottom:1px solid @gray-light; padding:5px;}
+}
+
+.itemDate{font-size:11px;color:#AAAAAA;}
+
+.navbar-collapse.collapse.show {
+    visibility: inherit;
+}
+

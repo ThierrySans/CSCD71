@@ -1,0 +1,15 @@
+- title: Lectures
+  url: /lectures/
+  absolute: False
+ 
+- title: Course Work
+  url: /work/
+  absolute: False
+
+- title: Slack
+  url:  https://cscd71f22.slack.com
+  absolute: True
+
+- title: Github
+  url: https://github.com/ThierrySans/CSCD71
+  absolute: True

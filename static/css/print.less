@@ -1,0 +1,34 @@
+@import "../../node_modules/bootstrap-less/bootstrap/bootstrap.less";
+
+@page{size:a4;}
+
+@media print{
+
+    #header{
+        .jumbotron();
+        h1{
+            font-size: 35px;
+        }
+        // page-break-after: always;
+        #instructor, #timing {
+            div{
+                font-size: @jumbotron-font-size*0.9;
+            }
+        }
+    }
+    
+    #main{
+      .make-row();
+      #syllabus{
+        .make-xs-column(12);
+        padding-left:@jumbotron-padding;
+      }
+      #news{
+        display: none !important;
+      }
+    }
+
+    a[href]:after {
+        content: none !important;
+    }
+}

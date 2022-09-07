@@ -1,0 +1,10 @@
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - "*.key"
+  - "*.old"
+  - "*.nogit"
+  - "node_modules"
+  
