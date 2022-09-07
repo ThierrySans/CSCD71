@@ -1,4 +1,4 @@
-# [CSCD71 Operating Systems](https://thierrysans.github.io/CSCD71/)
+# [CSCD71 Blockchains and Decentralized Applications](https://thierrysans.github.io/CSCD71/)
 
 This is the source code for the CSCD71 course website.
 
