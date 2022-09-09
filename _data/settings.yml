@@ -2,7 +2,7 @@
 ref: CSCD71
 title: Blockchains and Decentralized Applications
 edition: Fall 2022
-description: "The course is meant to expose students to Web3 by covering the technical aspects of blockchain technologies and smart contracts. The course will have three learning outcomes. First, the students will learn how to build blockchains based on different consensus. Secondly, the student will learn how to develop decentralized applications using smart contracts. Finally, they will learn about the current challenges of blockchain technologies such as scalability, interoperability and privacy. The course will be co-taugh with David Liu, UTSC CS alumni and Founder of dApp Technology Inc. and will feature guest speakers from the industry."
+description: "The course is meant to expose students to Web3 by covering the technical aspects of blockchain technologies and smart contracts. The course will have three learning outcomes. First, the students will learn how to build blockchains based on different consensus. Secondly, they will learn how to develop decentralized applications using smart contracts. Finally, they will learn about the current challenges of blockchain technologies such as scalability, interoperability and privacy. The course will be co-taugh with David Liu, UTSC CS alumni and Founder of dApp Technology Inc. and will feature guest speakers from the industry."
 website: https://thierrysans.me/CSCD71/
 github: https://github.com/ThierrySans/CSCD71
 slack: https://cscd71f22.slack.com

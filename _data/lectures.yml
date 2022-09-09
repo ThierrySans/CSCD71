@@ -1,19 +1,17 @@
-- week: Distributed Ledger
+- week: Introduction
   notes:
-      # Introduction: 01/slides/CSCD71-Introduction
+      Introduction: 01/slides/CSCD71-Introduction
   readings:
 
-- week: Crypto toolbox and blockchain datastructure
+- week: Bitcoin and Ethereum Basics
 
-- week: Wallets
-
-- week: Consensus
+- week: Consensus Algorithms
 
 - week: Smart contract 1  
 
-- break: Reading Week
-
 - week: Smart contract 2
+
+- break: Reading Week
 
 - week: Uses cases (Stablecoins, DEX, Lending, DAOs)    
 
@@ -21,6 +19,8 @@
 
 - week: Guest Lecture 
   
+- week: Guest Lecture
+
 - week: Guest Lecture
 
 - week: Project Presentations
