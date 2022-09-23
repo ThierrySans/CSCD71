@@ -30,7 +30,7 @@ permalink: /lectures/
         <div class="notes">
             <ul>
             {% for note in e.notes %}
-                <li><a href="{{note[1]}}">{{note[0]}}</a> <a href="{{note[1]}}.pdf">(pdf)</a></li>
+                <li><a href="{{note[1]}}">{{note[0]}}</a></li>
 			{% endfor %}
             </ul>
         </div>
