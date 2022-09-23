@@ -38,4 +38,4 @@ print(message.decode('utf-8'))
 forged = signed_base64[:-1] + bytes([int(signed_base64[-1]) ^ 1])
 # Will raise nacl.exceptions.BadSignatureError, since the signature check
 # is failing
-public_key.verify(forged)
+# public_key.verify(forged)

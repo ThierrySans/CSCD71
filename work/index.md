@@ -11,8 +11,8 @@ permalink: /work/
         <div class="column3">Handout</div>
     </div>
     <div class="row">
-        <div class="column2">Oct 2</div>
-        <div class="column3">Assignment 1: Blockchain Basics</div>
+        <div class="column2">Oct 9</div>
+        <div class="column3"><a href="https://classroom.github.com/a/SEuKDjNN">Assignment 1: Blockchain Basics</a></div>
     </div>
     <div class="row">
         <div class="column2">Oct 23</div>

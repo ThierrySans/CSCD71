@@ -1,11 +1,21 @@
 - week: Introduction
   notes:
-      Introduction: 01/slides/CSCD71-Introduction
+      Introduction: 01/CSCD71-Introduction
   readings:
+      - Bitcoin - A Peer-to-Peer Electronic Cash System: https://bitcoin.org/bitcoin.pdf
 
-- week: Bitcoin and Ethereum Basics
+- week: Bitcoin Basics
+  notes:
+      Introduction: 02/CSCD71-Bitcoin
+  readings:
+      - Bitcoin A Peer-to-Peer Electronic Cash System: https://bitcoin.org/bitcoin.pdf
+      - Bitcoin Developpers Guide: https://developer.bitcoin.org/reference/
 
 - week: Consensus Algorithms
+  notes:
+      Introduction: 03/CSCD71-Consensus
+  readings:
+     - Consensus Mechanisms: https://ethereum.org/en/developers/docs/consensus-mechanisms/#:~:text=Ethereum%20uses%20a%20proof%2Dof,to%20capital%20locked%20by%20stakers.
 
 - week: Smart contract 1  
 
