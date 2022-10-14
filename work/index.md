@@ -17,6 +17,7 @@ permalink: /work/
     <div class="row">
         <div class="column2">Oct 23</div>
         <div class="column3">Assignment 2: Decentralized Application</div>
+         <div class="column3"><a href="https://classroom.github.com/a/m1WSwKuK">Assignment 1: Smart Contracts</a></div>
     </div>
     <div class="row">
         <div class="column2">Nov 27</div>

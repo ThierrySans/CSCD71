@@ -15,11 +15,13 @@
   readings:
      Consensus Mechanisms: https://ethereum.org/en/developers/docs/consensus-mechanisms/#:~:text=Ethereum%20uses%20a%20proof%2Dof,to%20capital%20locked%20by%20stakers.
 
-- week: Smart contract 1
+- week: Smart contracts 1
   notes:
-      Smart Contracts: 04/CSCD71-SmartContracts.pdf 
+      Smart Contracts 1: 04/CSCD71-SmartContracts.pdf 
 
 - week: Smart contract 2
+  notes:
+      Smart Contracts 2: 05/CSCD71-SmartContracts2.pdf 
 
 - break: Reading Week
 
