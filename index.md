@@ -72,24 +72,16 @@ The numeric marks of the projects and final exam will be used to compute a compo
         <div class="column4">30% (2 assignments, 15% each)</div>
     </div>
     <div class="row">
-        <div class="hcolumn column4">Project</div>
-        <div class="column4">30%</div>
-    </div>
-    <div class="row">
-        <div class="hcolumn column4">Research</div>
-        <div class="column4">20%</div>
+        <div class="hcolumn column4">Research and Project</div>
+        <div class="column4">50%</div>
     </div>
     <div class="row">
         <div class="hcolumn column4">Participation</div>
         <div class="column4">5%</div>
     </div>
     <div class="row">
-        <div class="hcolumn column4">Bug hunting</div>
-        <div class="column4">5% Bonus</div>
-    </div>
-    <div class="row">
         <div class="hcolumn column4">Pitch</div>
-        <div class="column4">5% Bonus</div>
+        <div class="column4">10% Bonus</div>
     </div>
     <div class="row">
         <div class="hcolumn column4">Final Exam</div>

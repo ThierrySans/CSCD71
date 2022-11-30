@@ -20,19 +20,11 @@ permalink: /work/
          <div class="column3"><a href="https://classroom.github.com/a/m1WSwKuK">Assignment 1: Smart Contracts</a></div>
     </div>
     <div class="row">
-        <div class="column2">Nov 27</div>
-        <div class="column3">Project</div>
+        <div class="column2">Dec 2</div>
+        <div class="column3">Research and Project</div>
     </div>
     <div class="row">
-        <div class="column2">Dec 2</div>
-        <div class="column3">Research</div>
-    </div>
-    <div class="row">
-        <div class="column2">Dec 2</div>
-        <div class="column3">Bug Hunting</div>
-    </div>
-    <div class="row">
-        <div class="column2">Dec 2</div>
+        <div class="column2">Dec 9</div>
         <div class="column3">Pitch</div>
     </div>
 </div>

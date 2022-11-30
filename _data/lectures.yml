@@ -15,29 +15,35 @@
   readings:
      Consensus Mechanisms: https://ethereum.org/en/developers/docs/consensus-mechanisms/#:~:text=Ethereum%20uses%20a%20proof%2Dof,to%20capital%20locked%20by%20stakers.
 
-- week: Smart contracts 1
+- week: Smart Contract Basics
   notes:
-      Smart Contracts 1: 04/CSCD71-SmartContracts.pdf 
+      Smart Contracts basics: 04/CSCD71-SmartContracts.pdf 
 
-- week: Smart contract 2
+- week: Smart contract Internal
   notes:
-      Smart Contracts 2: 05/CSCD71-SmartContracts2.pdf 
+      Smart Contracts Internal: 05/CSCD71-SmartContracts2.pdf 
 
 - break: Reading Week
 
-- week: Uses cases (Stablecoins, DEX, Lending, DAOs)    
+- week: Smart Contract Applications
+  notes:
+      Smart Contracts Applications: 06/CSCD71-SmartContracts3.pdf    
 
-- week: Guest Lecture
+- week: Smart Contract Scalability
+  notes:
+      Smart Contracts Scalability: 07/CSCD71-SmartContracts4.pdf 
 
-- week: Guest Lecture 
+- week: Research and Project Briefing
   
-- week: Guest Lecture
+- week: Michael Rabinovici - Web3 - Which Way Forward
 
-- week: Guest Lecture
+- week: Dina Mainville - Privacy, Regulatory Compliance and Adoption
+  notes:
+      Privacy, Regulatory Compliance and Adoption: 10/DinaMainville.pdf 
 
-- week: Project Presentations
+- week: Secret Network - A blockchain with customizable privacy
 
-- week: Research Presentations 
+- week: Research and Project Presentations 
 
 
 
