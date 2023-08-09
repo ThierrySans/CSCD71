@@ -24,7 +24,7 @@ $ rvm get stable
 $ rvm use ruby --install --default
 ```
 
-### 3. Install Bundler (dependancy manager)
+### 3. Install Bundler (dependency manager)
 ```
 $ gem install bundler
 ```

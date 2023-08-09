@@ -1,47 +1,47 @@
 - week: Introduction
-  notes:
-      Introduction: 01/CSCD71-Introduction.pdf
+  # notes:
+  #     Introduction: 01/CSCD71-Introduction.pdf
 
 - week: Bitcoin Basics
-  notes:
-      Bitcoin : 02/CSCD71-Bitcoin.pdf
+  # notes:
+  #     Bitcoin : 02/CSCD71-Bitcoin.pdf
   readings:
       Bitcoin A Peer-to-Peer Electronic Cash System: https://bitcoin.org/bitcoin.pdf
       Bitcoin Developpers Guide: https://developer.bitcoin.org/reference/
 
 - week: Consensus Algorithms
-  notes:
-      Consensus: 03/CSCD71-Consensus.pdf
+  # notes:
+  #     Consensus: 03/CSCD71-Consensus.pdf
   readings:
      Consensus Mechanisms: https://ethereum.org/en/developers/docs/consensus-mechanisms/#:~:text=Ethereum%20uses%20a%20proof%2Dof,to%20capital%20locked%20by%20stakers.
 
 - week: Smart Contract Basics
-  notes:
-      Smart Contracts basics: 04/CSCD71-SmartContracts.pdf 
+  # notes:
+  #     Smart Contracts basics: 04/CSCD71-SmartContracts.pdf
 
-- week: Smart contract Internal
-  notes:
-      Smart Contracts Internal: 05/CSCD71-SmartContracts2.pdf 
+- week: Smart contract Internals
+  # notes:
+  #     Smart Contracts Internal: 05/CSCD71-SmartContracts2.pdf
 
 - break: Reading Week
 
 - week: Smart Contract Applications
-  notes:
-      Smart Contracts Applications: 06/CSCD71-SmartContracts3.pdf    
+  # notes:
+  #     Smart Contracts Applications: 06/CSCD71-SmartContracts3.pdf   
 
 - week: Smart Contract Scalability
-  notes:
-      Smart Contracts Scalability: 07/CSCD71-SmartContracts4.pdf 
+  # notes:
+  #     Smart Contracts Scalability: 07/CSCD71-SmartContracts4.pdf 
 
 - week: Research and Project Briefing
   
-- week: Michael Rabinovici - Web3, Which Way Forward?
+- week: Guest lecture
 
-- week: Dina Mainville - Privacy, Regulatory Compliance and Adoption
-  notes:
-      Privacy, Regulatory Compliance and Adoption: 10/DinaMainville.pdf 
+- week: Guest lecture
+  # notes:
+  #     Privacy, Regulatory Compliance and Adoption: 10/DinaMainville.pdf
 
-- week: Secret Network - A blockchain with customizable privacy
+- week: Guest lecture
 
 - week: Research and Project Presentations 
 

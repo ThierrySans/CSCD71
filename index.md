@@ -73,7 +73,7 @@ The numeric marks of the projects and final exam will be used to compute a compo
     </div>
     <div class="row">
         <div class="hcolumn column4">Research and Project</div>
-        <div class="column4">50%</div>
+        <div class="column4">40%</div>
     </div>
     <div class="row">
         <div class="hcolumn column4">Participation</div>
@@ -81,11 +81,11 @@ The numeric marks of the projects and final exam will be used to compute a compo
     </div>
     <div class="row">
         <div class="hcolumn column4">Pitch</div>
-        <div class="column4">10% Bonus</div>
+        <div class="column4">5% Bonus</div>
     </div>
     <div class="row">
         <div class="hcolumn column4">Final Exam</div>
-        <div class="column4">15%</div>
+        <div class="column4">25%</div>
     </div>
 </div>
 
