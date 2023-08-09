@@ -8,7 +8,7 @@ This course requires a good understanding of web development (CSCC09 recommended
 
 ## Course Staff
 
-We encourage you to post questions regarding course materials and projects on Piazza. However, if you need extended support, the course staff will hold office hours.
+We encourage you to post questions regarding course materials and projects on Slack. However, if you need extended support, the course staff will hold office hours.
 
 <div class="grid">
     <div class="hrow row">
@@ -117,7 +117,7 @@ You may discuss projects with other students, for example to clarify the require
 
 Do not let other students look at your project solutions, since this can lead to copying. Remember you are in violation of the UTSC Academic Code whether you copy someone else's work or allow someone else to copy your work. These rules are meant to ensure that all students understand their solutions well enough to prepare the solutions themselves. If challenged you must be able to reproduce and explain your work.
 
-You are not allowed to ask for help outside of the course Piazza. Asking for help anywhere else online or in private chat groups (unless the private group chat was setup between the group members of the group project) will be considered as unauthorized help. 
+You are not allowed to ask for help outside of the course Slack. Asking for help anywhere else online or in private chat groups (unless the private group chat was setup between the group members of the group project) will be considered as unauthorized help. 
 
 The course staff reserves the right to use code and text analysis tools to compare your submission with others to verify that no improper collaboration has occurred.
 
