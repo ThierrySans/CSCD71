@@ -99,7 +99,7 @@ For your work to be graded, it must meet the minimum standards of a professional
 
 Each team will have 4 late days which may be spent in units of one day and that can spread into 4 projects. Beyond those grace days, no late submissions will be accepted for any course work, and no make-up assignments will be provided for missed/poorly completed work. It is your responsibility to ensure that all work is completed on time and to the best of your ability.
 
-If an emergency arises that prevents you from being able to complete any piece of work, or attend an exam, contact one of the instructors immediately. You will need to have a properly completed Illness Verification Form signed by a registered doctor in order to be given special consideration.
+If an emergency arises that prevents you from being able to complete any piece of work, or attend an exam, contact one of the instructors immediately. 
 
 If a piece of work has been mis-marked or if you believe the rubric used to evaluate the work is not appropriate, you may request a re-mark. For a re-mark to succeed, you must clearly and concisely express what you believe was mis-marked. To request a re-mark, please contact your TA. Requests must be submitted *within 1 week* of the marks being returned.
 
