@@ -1,6 +1,6 @@
 - week: Introduction
-  # notes:
-  #     Introduction: 01/CSCD71-Introduction.pdf
+  notes:
+      Introduction: 01/CSCD71-Introduction.pdf
 
 - week: Bitcoin Basics
   # notes:
@@ -17,7 +17,7 @@
 
 - week: Key Management
 
-- Week: Guest Lecture
+- week: Guest Lecture
 
 - break: Reading Week
 
@@ -37,7 +37,7 @@
   # notes:
   #     Smart Contracts Scalability: 07/CSCD71-SmartContracts4.pdf 
   
-- week: Guest lecture
+- week: Smart Contract Security
 
 - week: Guest lecture
   # notes:
