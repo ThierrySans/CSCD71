@@ -10,6 +10,6 @@ msg = b'Hi, I am Alice'
 digest_base64 = sha256(msg, encoder=Base64Encoder)
 print(digest_base64.decode('utf-8'))
 
-msg = b'Hi, I am Alice!'
+msg = b'Hi, I am Alica'
 digest_base64 = sha256(msg, encoder=Base64Encoder)
 print(digest_base64.decode('utf-8'))
