@@ -1,8 +1,6 @@
 import { randomBytes } from 'crypto';
 import secp256k1 from 'secp256k1';
 
-const msg = randomBytes(32)
-
 // generate privKey
 let privKey
 do {
@@ -13,6 +11,8 @@ console.log(new Uint8Array(privKey));
 
 // get the public key in a compressed format
 const pubKey = secp256k1.publicKeyCreate(privKey)
+
+const msg = randomBytes(32)
 
 // sign the message
 const sigObj = secp256k1.ecdsaSign(msg, privKey)
