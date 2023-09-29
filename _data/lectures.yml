@@ -11,12 +11,14 @@
       Bitcoin Developpers Guide: https://developer.bitcoin.org/reference/
 
 - week: Consensus Algorithms
-  # notes:
-  #     Consensus: 03/CSCD71-Consensus.pdf
+  notes:
+      Consensus: 03/CSCD71-Consensus.pdf
   readings:
      Consensus Mechanisms: https://ethereum.org/en/developers/docs/consensus-mechanisms/#:~:text=Ethereum%20uses%20a%20proof%2Dof,to%20capital%20locked%20by%20stakers.
 
 - week: Key Management
+  notes:
+      Consensus: 04/CSCD71-KeyManagement.pdf
 
 - week: Guest Lecture
 
