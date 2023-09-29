@@ -7,4 +7,4 @@ exclude:
   - "*.old"
   - "*.nogit"
   - "node_modules"
-  
+  - "src"  
