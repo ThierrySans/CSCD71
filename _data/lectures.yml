@@ -9,7 +9,8 @@
   readings:
       Bitcoin A Peer-to-Peer Electronic Cash System: https://bitcoin.org/bitcoin.pdf
       Bitcoin Developpers Guide: https://developer.bitcoin.org/reference/
-
+      "Tutorial: Using Bitcoin Wallets": https://docs.google.com/presentation/d/1a3SJrG8C6Wtq6Y_0NEPV3NHQCAk1fH73jv629JPFIDA/edit?usp=sharing
+      
 - week: Consensus Algorithms
   notes:
       Consensus: 03/CSCD71-Consensus.pdf
@@ -19,14 +20,20 @@
 - week: Key Management
   notes:
       Key Management: 04/CSCD71-KeyManagement.pdf
+  readings: 
+      "Tutorial: Metamask, Faucets, ERC721 & ERC20": https://docs.google.com/presentation/d/1qRjB8CMseIbbsgjkMmQ4cXtpHgV4lxgTSoerK8Tcc94/edit?usp=sharing
 
-- week: Guest Lecture
+- week: Bitcoin Script
+  notes:
+     Bitcoin Script: 05/CSCD71-BitcoinScript.pdf
+  readings:
+      "Tutorial: Bitcoin Multisignature": https://docs.google.com/presentation/d/1zJaixbuE-MMi6bZ3qRow1ENvmBJe100ZqXuzCwAO6ZU/edit?usp=sharing
 
 - break: Reading Week
 
 - week: Smart Contract Basics
-  # notes:
-  #     Smart Contracts basics: 04/CSCD71-SmartContracts.pdf
+  notes:
+      Smart Contracts basics: 06/CSCD71-SmartContracts.pdf
 
 - week: Smart contract Internals
   # notes:

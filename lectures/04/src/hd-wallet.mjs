@@ -18,6 +18,7 @@ const checkKey = key.derive("m/44'/1'/0'/0/0");
 console.log(checkKey.privateExtendedKey, checkKey.publicExtendedKey);
 
 const transactionKey = HDKey.fromExtendedKey(receivingKey.publicExtendedKey).deriveChild(0);
+console.log(transactionKey.publicKey);
 console.log(transactionKey.publicExtendedKey);
 
 console.log(checkKey.publicExtendedKey == transactionKey.publicExtendedKey)
@@ -25,6 +26,7 @@ console.log(checkKey.publicExtendedKey == transactionKey.publicExtendedKey)
 const msg = randomBytes(32);
 const hash = sha256(msg);
 const sig = checkKey.sign(hash);
+console.log(sig);
 console.log(checkKey.verify(hash, sig));
 console.log(transactionKey.verify(hash, sig));
 

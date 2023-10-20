@@ -11,11 +11,11 @@ permalink: /work/
         <div class="column3">Handout</div>
     </div>
     <div class="row">
-        <div class="column2">Oct 1</div>
+        <div class="column2">Oct 22</div>
         <div class="column3">Assignment 1: Blockchain Basics</div>
     </div>
     <div class="row">
-        <div class="column2">Nov 5</div>
+        <div class="column2">Nov 12</div>
          <div class="column3">Assignment 2: Smart Contracts</div>
     </div>
     <div class="row">
