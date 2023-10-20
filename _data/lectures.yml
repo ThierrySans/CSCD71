@@ -20,8 +20,6 @@
 - week: Key Management
   notes:
       Key Management: 04/CSCD71-KeyManagement.pdf
-  readings: 
-      "Tutorial: Metamask, Faucets, ERC721 & ERC20": https://docs.google.com/presentation/d/1qRjB8CMseIbbsgjkMmQ4cXtpHgV4lxgTSoerK8Tcc94/edit?usp=sharing
 
 - week: Bitcoin Script
   notes:
@@ -34,6 +32,9 @@
 - week: Smart Contract Basics
   notes:
       Smart Contracts basics: 06/CSCD71-SmartContracts.pdf
+  readings:
+      "Metamask, Faucets, ERC721 & ERC20
+": https://docs.google.com/presentation/d/1qRjB8CMseIbbsgjkMmQ4cXtpHgV4lxgTSoerK8Tcc94/edit?usp=sharing
 
 - week: Smart contract Internals
   # notes:
