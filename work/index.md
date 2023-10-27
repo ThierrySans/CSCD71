@@ -12,11 +12,11 @@ permalink: /work/
     </div>
     <div class="row">
         <div class="column2">Oct 22</div>
-        <div class="column3">Assignment 1: Blockchain Basics</div>
+        <div class="column3"><a href="https://classroom.github.com/a/DaCikHtw">Assignment 1: Blockchain Basics</a></div>
     </div>
     <div class="row">
         <div class="column2">Nov 12</div>
-         <div class="column3">Assignment 2: Smart Contracts</div>
+         <div class="column3"><a href="https://classroom.github.com/a/WOVDgdbS">Assignment 2: Smart Contracts</a></div>
     </div>
     <div class="row">
         <div class="column2">Dec 3</div>
