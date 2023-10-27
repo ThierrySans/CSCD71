@@ -29,6 +29,14 @@ We encourage you to post questions regarding course materials and projects on Sl
         <div class="column3">IC-346</div>
         <div class="column3">Slack only (no email)</div>
     </div>
+    {% for a in site.data.settings.assistants %}
+    <div class="row">
+        <div class="hcolumn column3">{{a.name}}</div>
+        <div class="column3">{{a.hours}}</div>
+        <div class="column3">{{a.location}}</div>
+        <div class="column3">{{a.contact}}</div>
+    </div>
+    {% endfor %}
 </div>
 
 ## Course Timing
