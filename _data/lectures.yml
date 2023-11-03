@@ -34,11 +34,14 @@
   notes:
       Smart Contracts basics: 06/CSCD71-SmartContracts.pdf
   readings:
-      Metamask, Faucets, ERC721 & ERC20: https://docs.google.com/presentation/d/1qRjB8CMseIbbsgjkMmQ4cXtpHgV4lxgTSoerK8Tcc94/edit?usp=sharing
+      "Tutorial: Metamask, Faucets, ERC721 & ERC20": https://docs.google.com/presentation/d/1qRjB8CMseIbbsgjkMmQ4cXtpHgV4lxgTSoerK8Tcc94/edit?usp=sharing
+      "Tutorial: Code": https://github.com/lakhwani/cscd71/tree/main/tutorial-3
 
 - week: Ethereum V2
   notes:
       Smart Contracts Internal: 07/CSCD71-EthereumV2.pdf
+  readings:
+      "Tutorial: Borrowing, Lending & AMMs": https://docs.google.com/presentation/d/1F93WIY2GRPCyRw6W6fhNtj9nOkYdnqZ48AkBBXfaaP8/edit#slide=id.g13bbb6e15e6_0_0      
 
 - week: Smart Contract Applications
   # notes:
