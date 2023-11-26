@@ -39,23 +39,25 @@
 
 - week: Ethereum V2
   notes:
-      Smart Contracts Internal: 07/CSCD71-EthereumV2.pdf
-  readings:
-      "Tutorial: Borrowing, Lending & AMMs": https://docs.google.com/presentation/d/1F93WIY2GRPCyRw6W6fhNtj9nOkYdnqZ48AkBBXfaaP8/edit#slide=id.g13bbb6e15e6_0_0      
+      Smart Contracts Internal: 07/CSCD71-EthereumV2.pdf    
 
-- week: Smart Contract Applications
-  # notes:
-  #     Smart Contracts Applications: 06/CSCD71-SmartContracts3.pdf   
+- week: Advanced Topics
+  notes:
+      Advanced Topics: 08/CSCD71-AdvancedTopics.pdf
+  readings:
+      "Tutorial: Borrowing, Lending & AMMs": https://docs.google.com/presentation/d/1F93WIY2GRPCyRw6W6fhNtj9nOkYdnqZ48AkBBXfaaP8/edit#slide=id.g13bbb6e15e6_0_0  
 
 - week: Smart Contract Scalability
-  # notes:
-  #     Smart Contracts Scalability: 07/CSCD71-SmartContracts4.pdf 
+  notes:
+      Smart Contracts Scalability: 09/CSCD71-Scalability.pdf
+  
+- week: (guest lecture) "EigenLayer" by Yuan Sun
   
 - week: Smart Contract Security
-
-- week: Guest lecture
-  # notes:
-  #     Privacy, Regulatory Compliance and Adoption: 10/DinaMainville.pdf
+  readings:
+      known attacks: https://ethereum-contract-security-techniques-and-tips.readthedocs.io/en/latest/known_attacks/
+      Smart Contract Auditing, Assembly, Security, and DeFi: https://github.com/Cyfrin/security-and-auditing-full-course-s23
+      The Ethernaut: https://ethernaut.openzeppelin.com/
 
 - week: Project Presentations 
 
