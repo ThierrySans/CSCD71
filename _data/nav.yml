@@ -6,8 +6,8 @@
   url: /work/
   absolute: False
 
-- title: Slack
-  url:  https://cscd71f23.slack.com
+- title: Element
+  url:  https://matrix.to/#/!ayAnHJbTqbTPzPwneQ:matrix.org?via=matrix.org
   absolute: True
 
 - title: Github

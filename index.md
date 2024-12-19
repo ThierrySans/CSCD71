@@ -8,7 +8,7 @@ This course requires a good understanding of web development (CSCC09 recommended
 
 ## Course Staff
 
-We encourage you to post questions regarding course materials and projects on Slack. However, if you need extended support, the course staff will hold office hours.
+We encourage you to post questions regarding course materials and projects on Element. However, if you need extended support, the course staff will hold office hours.
 
 <div class="grid">
     <div class="hrow row">
@@ -23,18 +23,18 @@ We encourage you to post questions regarding course materials and projects on Sl
         <div class="column3">{{site.data.settings.instructor.location}}</div>
         <div class="column3">{{site.data.settings.instructor.contact}}</div>
     </div>
-    <div class="row">
+    <!--div class="row">
         <div class="hcolumn column3">David Liu</div>
-        <div class="column3">Fri 15:00-16:00</div>
-        <div class="column3">IC-346</div>
-        <div class="column3">Slack only (no email)</div>
-    </div>
+        <div class="column3">TBD</div>
+        <div class="column3"></div>
+        <div class="column3">Element only (no email)</div>
+    </div-->
     {% for a in site.data.settings.assistants %}
     <div class="row">
         <div class="hcolumn column3">{{a.name}}</div>
         <div class="column3">{{a.hours}}</div>
         <div class="column3">{{a.location}}</div>
-        <div class="column3">Slack only (no email)</div>
+        <div class="column3">Element only (no email)</div>
     </div>
     {% endfor %}
 </div>
@@ -62,7 +62,7 @@ We encourage you to post questions regarding course materials and projects on Sl
 
 	One of the nice things about using Github for the course website is that you can contribute to the course website. If you see something on the course website that should be fixed, or want to improve the UI, please feel free to submit a pull request. 
 
-- [The Slack Discussion Board]({{ site.data.settings.slack }})
+- [The Element Discussion Board]({{ site.data.settings.element }})
 
 	The discussion board is the best place to ask technical questions, and general questions about the course, projects and labs. For personal issues, please use instructor's private channel. I try to respond by the end of the next day. However, due to volume, it may take longer, especially on weekends.
 
@@ -86,10 +86,6 @@ The numeric marks of the projects and final exam will be used to compute a compo
     <div class="row">
         <div class="hcolumn column4">Participation</div>
         <div class="column4">5%</div>
-    </div>
-    <div class="row">
-        <div class="hcolumn column4">Pitch</div>
-        <div class="column4">5% Bonus</div>
     </div>
     <div class="row">
         <div class="hcolumn column4">Final Exam</div>
@@ -117,7 +113,7 @@ You are expected to comply with the [Code of Behaviour on Academic Matters](http
 
 You are not allowed to look at solutions available online. 
 
-You are fully responsible for the piece of work you submit to Github repository as your contribution to the project. 
+You are fully responsible for the piece of work you submit as your contribution to the project. 
 
 When the assignment handout allows you to use snippets of code from the web, you should cite the source in the source code. As a rule of thumb, any piece of code larger than 5 lines that has been copied and re-used as is or even slightly modified must be clearly referenced. However, any piece of code larger than 25 lines should not be re-used. 
 
@@ -125,7 +121,7 @@ You may discuss projects with other students, for example to clarify the require
 
 Do not let other students look at your project solutions, since this can lead to copying. Remember you are in violation of the UTSC Academic Code whether you copy someone else's work or allow someone else to copy your work. These rules are meant to ensure that all students understand their solutions well enough to prepare the solutions themselves. If challenged you must be able to reproduce and explain your work.
 
-You are not allowed to ask for help outside of the course Slack. Asking for help anywhere else online or in private chat groups (unless the private group chat was setup between the group members of the group project) will be considered as unauthorized help. 
+You are not allowed to ask for help outside of the course Element. Asking for help anywhere else online or in private chat groups (unless the private group chat was setup between the group members of the group project) will be considered as unauthorized help. 
 
 The course staff reserves the right to use code and text analysis tools to compare your submission with others to verify that no improper collaboration has occurred.
 
