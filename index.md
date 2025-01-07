@@ -2,6 +2,17 @@
 layout: home
 ---
 
+## Learning Outcomes
+
+Upon successful completion of this course, students will be able to:
+
+- explain how blockchain work internally
+- explain different consensus mechanisms such as Proof of Authority, Proof of Work and Proof of Stake
+- compare the different blockchain designs
+- write and debug blockchain code
+- write and debug smart contract applications on EVM blockchains
+- understand the current challenges of blockchain technologies such as scalability, interoperability and privacy
+
 ## Prerequisite
 
 This course requires a good understanding of web development (CSCC09 recommended).
