@@ -3,9 +3,9 @@
       Introduction: 01/CSCD71-Introduction.pdf
 
 - week: Bitcoin Basics
-  # notes:
-  #     Blockchain : 02/CSCD71-Blockchain.pdf
-  #     Bitcoin : 02/CSCD71-Bitcoin.pdf
+  notes:
+      Blockchain : 02/CSCD71-Blockchain.pdf
+      Bitcoin : 02/CSCD71-Bitcoin.pdf
   readings:
       Bitcoin A Peer-to-Peer Electronic Cash System: https://bitcoin.org/bitcoin.pdf
       Bitcoin Developpers Guide: https://developer.bitcoin.org/reference/
