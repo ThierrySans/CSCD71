@@ -2,14 +2,10 @@
   notes:
       Introduction: 01/CSCD71-Introduction.pdf
 
-- week: Bitcoin Basics
+- week: Blockchains and Wallets
   notes:
       Blockchain : 02/CSCD71-Blockchain.pdf
-      Bitcoin : 02/CSCD71-Bitcoin.pdf
-  readings:
-      Bitcoin A Peer-to-Peer Electronic Cash System: https://bitcoin.org/bitcoin.pdf
-      Bitcoin Developpers Guide: https://developer.bitcoin.org/reference/
-      "Tutorial: Using Bitcoin Wallets": https://docs.google.com/presentation/d/1a3SJrG8C6Wtq6Y_0NEPV3NHQCAk1fH73jv629JPFIDA/edit?usp=sharing
+      Key Management: 02/CSCD71-KeyManagement.pdf
       
 - week: Consensus Algorithms
   # notes:
@@ -17,23 +13,27 @@
   readings:
       Consensus Mechanisms: https://ethereum.org/en/developers/docs/consensus-mechanisms/#:~:text=Ethereum%20uses%20a%20proof%2Dof,to%20capital%20locked%20by%20stakers.
 
-- week: Key Management
+- week: Bitcoin
   # notes:
-  #     Key Management: 04/CSCD71-KeyManagement.pdf
+  #     Bitcoin : 04/CSCD71-Bitcoin.pdf
+  readings:
+      Bitcoin A Peer-to-Peer Electronic Cash System: https://bitcoin.org/bitcoin.pdf
+      Bitcoin Developpers Guide: https://developer.bitcoin.org/reference/
+      # "Tutorial: Using Bitcoin Wallets": https://docs.google.com/presentation/d/1a3SJrG8C6Wtq6Y_0NEPV3NHQCAk1fH73jv629JPFIDA/edit?usp=sharing
 
-- week: Bitcoin Script
+# - week: Bitcoin Script
   # notes:
   #    Bitcoin Script: 05/CSCD71-BitcoinScript.pdf
-  readings:
-      "Tutorial: Bitcoin Multisignature": https://docs.google.com/presentation/d/1zJaixbuE-MMi6bZ3qRow1ENvmBJe100ZqXuzCwAO6ZU/edit?usp=sharing
-      "Tutorial: Code": https://github.com/lakhwani/cscd71/tree/main/tutorial-2
+  # readings:
+  #     "Tutorial: Bitcoin Multisignature": https://docs.google.com/presentation/d/1zJaixbuE-MMi6bZ3qRow1ENvmBJe100ZqXuzCwAO6ZU/edit?usp=sharing
+  #     "Tutorial: Code": https://github.com/lakhwani/cscd71/tree/main/tutorial-2
 
 - week: Smart Contract Basics
   # notes:
   #     Smart Contracts basics: 06/CSCD71-SmartContracts.pdf
   readings:
-      "Tutorial: Metamask, Faucets, ERC721 & ERC20": https://docs.google.com/presentation/d/1qRjB8CMseIbbsgjkMmQ4cXtpHgV4lxgTSoerK8Tcc94/edit?usp=sharing
-      "Tutorial: Code": https://github.com/lakhwani/cscd71/tree/main/tutorial-3
+      # "Tutorial: Metamask, Faucets, ERC721 & ERC20": https://docs.google.com/presentation/d/1qRjB8CMseIbbsgjkMmQ4cXtpHgV4lxgTSoerK8Tcc94/edit?usp=sharing
+      # "Tutorial: Code": https://github.com/lakhwani/cscd71/tree/main/tutorial-3
 
 - week: Ethereum V2
   # notes:
@@ -41,21 +41,23 @@
 
 - break: Reading Week
 
-- week: Advanced Topics
+- week: DeFi (part 1)
   # notes:
   #     Advanced Topics: 08/CSCD71-AdvancedTopics.pdf
   readings:
-      "Tutorial: Borrowing, Lending & AMMs": https://docs.google.com/presentation/d/1F93WIY2GRPCyRw6W6fhNtj9nOkYdnqZ48AkBBXfaaP8/edit#slide=id.g13bbb6e15e6_0_0  
+      # "Tutorial: Borrowing, Lending & AMMs": https://docs.google.com/presentation/d/1F93WIY2GRPCyRw6W6fhNtj9nOkYdnqZ48AkBBXfaaP8/edit#slide=id.g13bbb6e15e6_0_0  
 
-- week: Smart Contract Scalability
+- week: DeFi (part 2)
+
+- week: Scalability
   # notes:
   #     Smart Contracts Scalability: 09/CSCD71-Scalability.pdf
   
 - week: (guest lecture)
   
-- week: Smart Contract Security
+- week: Security
   readings:
-      known attacks: https://ethereum-contract-security-techniques-and-tips.readthedocs.io/en/latest/known_attacks/
+      Known Attacks: https://ethereum-contract-security-techniques-and-tips.readthedocs.io/en/latest/known_attacks/
       Smart Contract Auditing, Assembly, Security, and DeFi: https://github.com/Cyfrin/security-and-auditing-full-course-s23
       The Ethernaut: https://ethernaut.openzeppelin.com/
 
