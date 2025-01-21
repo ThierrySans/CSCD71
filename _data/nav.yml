@@ -6,8 +6,8 @@
   url: /work/
   absolute: False
 
-- title: Element
-  url:  https://matrix.to/#/!HGEDonBodXjVhwmBMm:synapse.seclab.space?via=synapse.seclab.space
+- title: Slack
+  url:  https://join.slack.com/t/cscd71-w25/shared_invite/zt-2y9cdxgjn-8dq409xP3ZaetRJMxGN_BA
   absolute: True
 
 - title: Github
