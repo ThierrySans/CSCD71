@@ -35,9 +35,9 @@
       # "Tutorial: Metamask, Faucets, ERC721 & ERC20": https://docs.google.com/presentation/d/1qRjB8CMseIbbsgjkMmQ4cXtpHgV4lxgTSoerK8Tcc94/edit?usp=sharing
       # "Tutorial: Code": https://github.com/lakhwani/cscd71/tree/main/tutorial-3
 
-- week: Ethereum V2
-  # notes:
-  #     Smart Contracts Internal: 07/CSCD71-EthereumV2.pdf   
+- week: Tokens
+  notes:
+      Smart Contracts Internal: 06/CSCD71-Tokens.pdf
 
 - break: Reading Week
 
