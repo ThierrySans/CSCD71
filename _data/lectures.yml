@@ -42,8 +42,8 @@
 - break: Reading Week
 
 - week: DeFi (part 1)
-  # notes:
-  #     Advanced Topics: 08/CSCD71-AdvancedTopics.pdf
+  notes:
+      DeFi: 07/CSCD71-DeFi.pdf
   readings:
       # "Tutorial: Borrowing, Lending & AMMs": https://docs.google.com/presentation/d/1F93WIY2GRPCyRw6W6fhNtj9nOkYdnqZ48AkBBXfaaP8/edit#slide=id.g13bbb6e15e6_0_0  
 
