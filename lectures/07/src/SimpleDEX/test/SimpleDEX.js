@@ -19,7 +19,7 @@ describe("SimpleDEX", function () {
         await dex.waitForDeployment();
     });
 
-    it("Should add liquidity", async function () {
+    it("Should allow owner to add liquidity", async function () {
         const dexAddress = await dex.getAddress();
 
         await token1.approve(dexAddress, 1000);
@@ -36,11 +36,15 @@ describe("SimpleDEX", function () {
         await token1.approve(dexAddress, 1000);
         await token2.approve(dexAddress, 2000);
         await dex.addLiquidity(1000, 2000);
+		
+		const token1Balance = await token1.balanceOf(owner.address);
+		const token2Balance = await token2.balanceOf(owner.address);
+		
         await dex.removeLiquidity(1000);
 
         // Expect to receive back the tokens
-        expect(await token1.balanceOf(owner.address)).to.be.gte(1000);
-        expect(await token2.balanceOf(owner.address)).to.be.gte(2000);
+        expect(await token1.balanceOf(owner.address)).to.be.equal(token1Balance + 1000n);
+        expect(await token2.balanceOf(owner.address)).to.be.equal(token2Balance + 2000n);
     });
 
     it("Should swap tokens and collect fees", async function () {
@@ -54,10 +58,13 @@ describe("SimpleDEX", function () {
         await token1.transfer(userAddress, 100);
         await token1.connect(user).approve(dexAddress, 100);
 
-        const balanceBefore = await token2.balanceOf(userAddress);
         await dex.connect(user).swap(await token1.getAddress(), 100);
         const balanceAfter = await token2.balanceOf(userAddress);
 
-        expect(balanceAfter).to.be.above(balanceBefore);
+        expect(balanceAfter).to.be.equal(180);
+		
+		const balanceBefore = await token1.balanceOf(owner.address);
+		await dex.connect(owner).claimReward();
+		expect(await token1.balanceOf(owner.address)).to.be.gt(balanceBefore);
     });
 });

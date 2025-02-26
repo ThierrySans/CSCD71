@@ -7,6 +7,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 import "./MockOracle.sol";
 
+// import "hardhat/console.sol";
+
 contract SimpleLending is Ownable {
     IERC20 public tokenA;
     IERC20 public tokenB;
@@ -34,6 +36,8 @@ contract SimpleLending is Ownable {
 
     mapping(uint256 => Loan) public loans;
 
+	event Borrowed(address indexed user, uint256 collateralAmount, uint256 borrowAmount, uint256 maturity);
+
     constructor(IERC20 _tokenA, IERC20 _tokenB, MockOracle _oracle) Ownable(msg.sender) {
         tokenA = _tokenA;
         tokenB = _tokenB;
@@ -57,21 +61,22 @@ contract SimpleLending is Ownable {
 		require(tokenA.transfer(msg.sender, amount), "TokenA transfer failed");
     }
 
-    function borrow(uint256 collateralAmount, uint256 borrowAmount) external returns (uint256){
+    function borrow(uint256 collateralAmount, uint256 borrowAmount) external {
 		uint256 exchangeRate = oracle.getExchangeRate();
 		uint256 requiredCollateral = borrowAmount * exchangeRate/RATE_DIVISOR * REQUIRED_RATIO/RATE_DIVISOR;
 		require(collateralAmount >= requiredCollateral, "Insufficient collateral");
         require(tokenB.transferFrom(msg.sender, address(this), collateralAmount), "TokenB transfer failed");
         require(tokenA.transfer(msg.sender, borrowAmount), "TokenA transfer failed");
         totalBorrows+= borrowAmount;
+		uint256 maturity = block.timestamp + MATURITY;
 		loans[loanCounter] = Loan({
             borrower: msg.sender,
             collateralAmount: collateralAmount,
             borrowAmount: borrowAmount,
-            maturity: block.timestamp + MATURITY,
+            maturity: maturity,
             active: true
         });
-		return loanCounter++;
+		emit Borrowed(msg.sender, collateralAmount, borrowAmount, maturity);
     }
 
     function repay(uint256 loanId) external {
@@ -79,7 +84,7 @@ contract SimpleLending is Ownable {
         require(loan.borrower == msg.sender, "Not the borrower");
         require(loan.active, "Loan not active");
         require(block.timestamp <= loan.maturity, "Maturity passed");
-		uint256 amountToRepay = loan.borrowAmount * (1 + INTEREST_RATE/RATE_DIVISOR);
+		uint256 amountToRepay = loan.borrowAmount * (RATE_DIVISOR + INTEREST_RATE) / RATE_DIVISOR;
 		loan.active = false;
 		totalBorrows-= loan.borrowAmount;
 		require(tokenA.transferFrom(msg.sender, address(this), amountToRepay), "TokenA transfer failed");
@@ -91,12 +96,13 @@ contract SimpleLending is Ownable {
         require(loan.active, "Loan not active");
 		bool isOverdue = block.timestamp > loan.maturity;
 		uint256 exchangeRate = oracle.getExchangeRate();
-		uint256 requiredCollateral = loan.borrowAmount * exchangeRate/RATE_DIVISOR * LIQUIDATION_RATIO/RATE_DIVISOR;
-		bool isUndercollaterized = (loan.collateralAmount >= requiredCollateral);
+		uint256 requiredCollateral = loan.borrowAmount * exchangeRate * LIQUIDATION_RATIO / RATE_DIVISOR;
+		bool isUndercollaterized = (loan.collateralAmount < requiredCollateral);
         require( isOverdue || isUndercollaterized, "Loan not eligible for liquidation");
-		uint256 debtAmount = loan.borrowAmount * (1 + INTEREST_RATE/RATE_DIVISOR);
-		uint256 liquidatorAmmount = loan.borrowAmount * exchangeRate/RATE_DIVISOR * (1 + PENALTY_RATE / RATE_DIVISOR);
-		uint256 borrowerAmmount = loan.collateralAmount - liquidatorAmmount;
+		uint256 debtAmount = loan.borrowAmount * (RATE_DIVISOR + INTEREST_RATE) / RATE_DIVISOR;
+		uint256 returnAmount = loan.borrowAmount * exchangeRate * (RATE_DIVISOR + PENALTY_RATE) / RATE_DIVISOR;
+		uint256 liquidatorAmmount = (returnAmount > loan.collateralAmount) ? loan.collateralAmount: returnAmount;
+		uint256 borrowerAmmount = (loan.collateralAmount > liquidatorAmmount)? loan.collateralAmount - liquidatorAmmount : 0;
 		loan.active = false;
 		totalBorrows-= loan.borrowAmount;
 		require(tokenA.transferFrom(msg.sender, address(this), debtAmount), "TokenA transfer failed");

@@ -5,14 +5,16 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+// import "hardhat/console.sol";
+
 contract SimpleDEX is Ownable{
     IERC20 public token1;
     IERC20 public token2;
 
     uint256 public reserve1;
     uint256 public reserve2;
-    uint256 public constant FEE_PERCENT = 3; // 0.3% fee
-    uint256 public constant FEE_DIVISOR = 1000;
+    uint256 public constant FEE_PERCENT = 1; // 1% 
+    uint256 public constant FEE_DIVISOR = 100;
 
     constructor(address _token1, address _token2) Ownable(msg.sender) {
 		token1 = IERC20(_token1);
@@ -61,14 +63,14 @@ contract SimpleDEX is Ownable{
 	
 	function claimReward() external onlyOwner {
 		uint256 amount1 = token1.balanceOf(address(this)) - reserve1;
-		uint256 amount2 = token1.balanceOf(address(this)) - reserve2;
+		uint256 amount2 = token2.balanceOf(address(this)) - reserve2;
 		
 		// transfer the funds from contract to user
-        require(token1.transfer(msg.sender, amount1), "Token1 transfer failed");
-        require(token2.transfer(msg.sender, amount2), "Token2 transfer failed");
+        if (amount1>0) require(token1.transfer(msg.sender, amount1), "Token1 transfer failed");
+        if (amount2>0) require(token2.transfer(msg.sender, amount2), "Token2 transfer failed");
 	}
 
-    function swap(address _fromToken, uint256 _amountIn) external returns (uint256 amountOut) {
+    function swap(address _fromToken, uint256 _amountIn) external {
 		require(_amountIn > 0, "Amount must be greater than zero");
         require(_fromToken == address(token1) || _fromToken == address(token2), "Invalid token");
 
@@ -80,16 +82,16 @@ contract SimpleDEX is Ownable{
 
 		// deduct the fee from in
         uint256 amountMinusFee = (_amountIn * (FEE_DIVISOR - FEE_PERCENT)) / FEE_DIVISOR;
-		
+				
 		// calculate the amount of token to swap out
-        amountOut = (amountMinusFee * reserveOut) / (reserveIn + amountMinusFee);
+        uint256 amountOut = (amountMinusFee * reserveOut) / (reserveIn + amountMinusFee);
 
 		// update the reserves
         if (isToken1) {
-            reserve1 += _amountIn;
+            reserve1 += amountMinusFee;
             reserve2 -= amountOut;
         } else {
-            reserve2 += _amountIn;
+            reserve2 += amountMinusFee;
             reserve1 -= amountOut;
         }
 		// transfer the tokens from user to contract
