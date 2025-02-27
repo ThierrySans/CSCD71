@@ -5,6 +5,8 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+import "hardhat/console.sol";
+
 contract LPToken is ERC20, Ownable {
     constructor() ERC20("LPToken", "LPT") Ownable(msg.sender) {}
 
@@ -17,15 +19,15 @@ contract LPToken is ERC20, Ownable {
     }
 }
 
-contract SimpleDEXwithReward {
+contract SimpleDEXwithRewardToken {
     IERC20 public token1;
     IERC20 public token2;
 	LPToken public lpToken;
 
     uint256 public reserve1;
     uint256 public reserve2;
-    uint256 public constant FEE_PERCENT = 3; // 0.3% fee
-    uint256 public constant FEE_DIVISOR = 1000;
+    uint256 public constant FEE_PERCENT = 1; // 1% fee
+    uint256 public constant FEE_DIVISOR = 100;
 
 	uint256 public rewardPerToken1;
 	uint256 public rewardPerToken2;
@@ -36,6 +38,7 @@ contract SimpleDEXwithReward {
     constructor(address _token1, address _token2) {
 		token1 = IERC20(_token1);
         token2 = IERC20(_token2);
+		lpToken = new LPToken();
     }
 
 	function addLiquidity(uint256 amount1, uint256 amount2) external {
@@ -146,17 +149,17 @@ contract SimpleDEXwithReward {
 
 		// deduct the fee from in and add to rewardPerToken
         uint256 amountMinusFee = (_amountIn * (FEE_DIVISOR - FEE_PERCENT)) / FEE_DIVISOR;
-		rewardPerToken += _amountIn - amountMinusFee / lpToken.totalSupply();
+		rewardPerToken += (_amountIn - amountMinusFee) / lpToken.totalSupply();
 		
 		// calculate the amount of token to swap out
         amountOut = (amountMinusFee * reserveOut) / (reserveIn + amountMinusFee);
 
 		// update the reserves
         if (isToken1) {
-            reserve1 += _amountIn;
+            reserve1 += amountMinusFee;
             reserve2 -= amountOut;
         } else {
-            reserve2 += _amountIn;
+            reserve2 += amountMinusFee;
             reserve1 -= amountOut;
         }
 		// transfer the tokens from user to contract
