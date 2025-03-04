@@ -4,25 +4,24 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("FixedRateLending Contract", function () {
-		let TokenA, tokenA, TokenB, tokenB, Oracle, oracle, Lending, lending;
+		let tokenA, tokenB, oracle, lending;
 		let owner, borrower, liquidator;
 
   beforeEach(async function () {
 		[owner, borrower, liquidator] = await ethers.getSigners();
 
-		TokenA = await ethers.getContractFactory("ERC20Mock");
-		tokenA = await TokenA.deploy("TokenA", "TKA", owner.address, 10000);
+		const Token = await ethers.getContractFactory("ERC20Mock");
+		tokenA = await Token.deploy("TokenA", "TKA", owner.address, 10000);
 		await tokenA.waitForDeployment();
 
-		TokenB = await ethers.getContractFactory("ERC20Mock");
-		tokenB = await TokenB.deploy("TokenB", "TKB", owner.address, 10000);
+		tokenB = await Token.deploy("TokenB", "TKB", owner.address, 10000);
 		await tokenB.waitForDeployment();
 
-		Oracle = await ethers.getContractFactory("MockOracle");
+		const Oracle = await ethers.getContractFactory("MockOracle");
 		oracle = await Oracle.deploy(1);
 		await oracle.waitForDeployment();
 
-		Lending = await ethers.getContractFactory("SimpleLending");
+		const Lending = await ethers.getContractFactory("SimpleLending");
 		lending = await Lending.deploy(await tokenA.getAddress(), await tokenB.getAddress(), await oracle.getAddress());
 		await lending.waitForDeployment();
   });
