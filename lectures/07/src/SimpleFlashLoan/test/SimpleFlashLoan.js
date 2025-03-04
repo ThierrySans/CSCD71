@@ -33,13 +33,13 @@ describe("FixedRateLending Contract", function () {
 		const Flash = await ethers.getContractFactory("SimpleFlashLoan");
 		flash = await Flash.deploy(await token1.getAddress());
 		await flash.waitForDeployment();
-	});
-
-	it("Should do a flash loan arbitrage", async function () {
-		expect(await token1.balanceOf(borrower.address)).to.be.eq(0);
 		
 		await token1.approve(await flash.getAddress(), 1000);
         await flash.deposit(1000);
+	});
+
+	it("Should do a flash loan arbitrage", async function () {		
+		expect(await token1.balanceOf(borrower.address)).to.be.eq(0);
 		
         await token1.connect(borrower).approve(await dex1.getAddress(), 100);
 		const call1 = {
