@@ -63,7 +63,7 @@ contract SimpleLending is Ownable {
 
     function borrow(uint256 collateralAmount, uint256 borrowAmount) external {
 		uint256 exchangeRate = oracle.getExchangeRate();
-		uint256 requiredCollateral = borrowAmount * exchangeRate/RATE_DIVISOR * REQUIRED_RATIO/RATE_DIVISOR;
+		uint256 requiredCollateral = borrowAmount * exchangeRate / RATE_DIVISOR * REQUIRED_RATIO / RATE_DIVISOR;
 		require(collateralAmount >= requiredCollateral, "Insufficient collateral");
         require(tokenB.transferFrom(msg.sender, address(this), collateralAmount), "TokenB transfer failed");
         require(tokenA.transfer(msg.sender, borrowAmount), "TokenA transfer failed");
@@ -96,11 +96,11 @@ contract SimpleLending is Ownable {
         require(loan.active, "Loan not active");
 		bool isOverdue = block.timestamp > loan.maturity;
 		uint256 exchangeRate = oracle.getExchangeRate();
-		uint256 requiredCollateral = loan.borrowAmount * exchangeRate * LIQUIDATION_RATIO / RATE_DIVISOR;
+		uint256 requiredCollateral = loan.borrowAmount * exchangeRate / RATE_DIVISOR * LIQUIDATION_RATIO / RATE_DIVISOR;
 		bool isUndercollaterized = (loan.collateralAmount < requiredCollateral);
         require( isOverdue || isUndercollaterized, "Loan not eligible for liquidation");
 		uint256 debtAmount = loan.borrowAmount * (RATE_DIVISOR + INTEREST_RATE) / RATE_DIVISOR;
-		uint256 returnAmount = loan.borrowAmount * exchangeRate * (RATE_DIVISOR + PENALTY_RATE) / RATE_DIVISOR;
+		uint256 returnAmount = loan.borrowAmount * exchangeRate / RATE_DIVISOR * (RATE_DIVISOR + PENALTY_RATE) / RATE_DIVISOR;
 		uint256 liquidatorAmmount = (returnAmount > loan.collateralAmount) ? loan.collateralAmount: returnAmount;
 		uint256 borrowerAmmount = (loan.collateralAmount > liquidatorAmmount)? loan.collateralAmount - liquidatorAmmount : 0;
 		loan.active = false;

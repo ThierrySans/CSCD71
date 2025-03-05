@@ -18,7 +18,7 @@ describe("FixedRateLending Contract", function () {
 		await tokenB.waitForDeployment();
 
 		const Oracle = await ethers.getContractFactory("MockOracle");
-		oracle = await Oracle.deploy(1);
+		oracle = await Oracle.deploy(100);
 		await oracle.waitForDeployment();
 
 		const Lending = await ethers.getContractFactory("SimpleLending");
@@ -103,7 +103,7 @@ describe("FixedRateLending Contract", function () {
 
 		await lending.connect(borrower).borrow(1500, 1000);
 
-		await oracle.setExchangeRate(2);
+		await oracle.setExchangeRate(130);
 		
 		await tokenA.connect(owner).transfer(liquidator.address, 1050);
 		await tokenA.connect(liquidator).approve(await lending.getAddress(), 1050);
@@ -111,7 +111,7 @@ describe("FixedRateLending Contract", function () {
 		await lending.connect(liquidator).liquidate(0);
 		
 		expect(await tokenA.balanceOf(liquidator.address)).to.be.equal(0);
-		expect(await tokenB.balanceOf(liquidator.address)).to.be.equal(1500);
+		expect(await tokenB.balanceOf(liquidator.address)).to.be.equal(1430);
 
     });
 	
