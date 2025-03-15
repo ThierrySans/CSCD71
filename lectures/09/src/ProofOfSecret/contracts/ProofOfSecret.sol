@@ -11,7 +11,7 @@ contract ProofOfSecret {
 	
     struct Record {
         uint256 amount;
-		bool active;
+		mapping(uint256 => bool) nonces;
     }
 	
     mapping(uint256 => Record) public records;
@@ -20,27 +20,31 @@ contract ProofOfSecret {
 		verifier = _verifier;
     }
 
-    function deposit(uint256 hash) payable external {
-		Record storage record = records[hash];
-		if (record.active){
-			record.amount += msg.value;
-		}else{
-			records[hash] = Record({ amount: msg.value, active: true });
-		}
+    function deposit(uint256 secretHash) payable external {
+		records[secretHash].amount += msg.value;
     }
 
-    function withdraw(bytes calldata proof) external {
-		// unwrap the proof
-		( uint256[2] memory pi_a, uint256[2][2] memory pi_b, uint256[2] memory pi_c, uint256[1] memory signals ) = abi.decode(proof, (uint256[2], uint256[2][2], uint256[2], uint256[1]));
+    function withdraw(bytes calldata proof) external { 
+		// unwrap the proof (to extract signals)
+		( uint256[2] memory pi_a, uint256[2][2] memory pi_b, uint256[2] memory pi_c, uint256[5] memory signals)
+			= abi.decode(proof, (uint256[2], uint256[2][2], uint256[2], uint256[5]));
 		// check the proof
-        (bool valid, ) = address(verifier).staticcall(abi.encodeWithSelector(Groth16Verifier.verifyProof.selector, pi_a, pi_b, pi_c, signals));
-        require(valid, "Proof verification failed");
-		// Retrieve deposits
-		Record storage record = records[signals[0]];
-		require(record.active, "No longer active");
-		record.active = false;
+		(bool valid, ) = address(verifier).staticcall(abi.encodeWithSelector(Groth16Verifier.verifyProof.selector, pi_a, pi_b, pi_c, signals));
+		require(valid, "Proof verification failed");
+		// extract parameters
+		uint256 secretHash = signals[0];
+		address addr = address(uint160(signals[2]));
+		uint256 amount = signals[3];
+		uint256 nonce = signals[4];
+		// check and update nonce reuse
+		require(!records[secretHash].nonces[nonce], "nonce has already been used");
+		records[secretHash].nonces[nonce] = true;
+		// Check and update amount
+		require(amount>0, "Amount should be greater than 0");
+		require(records[secretHash].amount >= amount, "insufficient balance");
+		records[secretHash].amount -= amount;
 		// Transfer funds
-		(bool sent, ) = address(msg.sender).call{value: record.amount}("");
+		(bool sent, ) = addr.call{value: amount}("");
 		require(sent, "Failed to send Ether");
     }
 }
