@@ -5,10 +5,9 @@ const fs = require("fs");
 const path = require("path");
 const snarkjs = require("snarkjs");
 const poseidon = require("poseidon-lite");
-const { IncrementalMerkleTree } = require("@zk-kit/incremental-merkle-tree");
 
-let wasmFile = path.join(__dirname, "..", "ptau-data", "ProofOfMembership_js", "ProofOfMembership.wasm");
-let zkeyFile = path.join(__dirname, "..", "ptau-data", "ProofOfMembership_0001.zkey");
+let wasmFile = path.join(__dirname, "..", "ptau-data", "ProofOfSecret_js", "ProofOfSecret.wasm");
+let zkeyFile = path.join(__dirname, "..", "ptau-data", "ProofOfSecret_0001.zkey");
 const vKey = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "ptau-data", "verification_key.json")));
 
 function randomBigInt(){
@@ -19,7 +18,7 @@ function randomBigInt(){
 	return BigInt(`0x${hexString}`);
 }
 
-describe("Proof Of Membership", function () {
+describe("Proof Of Secret", function () {
     let owner;
     let verifier;
 
@@ -30,23 +29,12 @@ describe("Proof Of Membership", function () {
 		await verifier.waitForDeployment();
     });
 
-    it("should generate and verify a proof of membership", async function () {
-		// creating 100 of secrets
-		const random = Math.floor(Math.random() * 100);
-		const tree = new IncrementalMerkleTree(poseidon.poseidon2, 20, BigInt(0), 2);
-		let secret;
-		for (let i =0; i<100; i++){
-			const s = randomBigInt();
-			if (random == i) secret = s;
-			await tree.insert(poseidon.poseidon1([s]));
-		};
+    it("should generate and verify a proof of secret", async function () {
+		const secret = randomBigInt();
 		const secretHash = poseidon.poseidon1([secret]);
-	    const merkleProof = tree.createProof(tree.indexOf(secretHash));
-	    const treeSiblings = merkleProof.siblings.map((s) => s[0]);
-	    const treePathIndices = merkleProof.pathIndices;
-		const { proof, publicSignals } = await snarkjs.groth16.fullProve({treeSiblings, treePathIndices, secret}, wasmFile, zkeyFile);
-		const root = tree.root;
-		expect(publicSignals[0]).to.be.equal(root);
+		
+		const { proof, publicSignals } = await snarkjs.groth16.fullProve({secret}, wasmFile, zkeyFile);
+		expect(publicSignals[0]).to.be.equal(secretHash);
 		const offchain = await snarkjs.groth16.verify(vKey, publicSignals, proof);
 		expect(offchain).to.be.true;
 		const proofCalldata = await snarkjs.groth16.exportSolidityCallData( proof, publicSignals);
