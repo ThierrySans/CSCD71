@@ -10,14 +10,8 @@ template ProofOfMembership(levels) {
     signal input treeSiblings[levels];
     signal input treePathIndices[levels];
     
-    // public inputs
-    signal input address;
-    signal input amount;
-    signal input nonce;
-    
     // output (considered as public inputs)
     signal output root;
-    signal output authHash;
     
     component secretHasher = Poseidon(1);
     secretHasher.inputs <== [secret];
@@ -30,10 +24,6 @@ template ProofOfMembership(levels) {
     }
     
     root <== tree.root;
-    
-    component authHasher = Poseidon(4);
-    authHasher.inputs <== [secret, address, amount, nonce];
-    authHash <== authHasher.out;
 }
 
-component main {public [address, amount, nonce]} = ProofOfMembership(20);
+component main = ProofOfMembership(20);
