@@ -2,10 +2,10 @@ pragma circom 2.0.0;
 
 include "../node_modules/circomlib/circuits/poseidon.circom";
 
-template ProofOfSecret() {
+template SimplePassword() {
     
     // private inputs
-    signal input secret;
+    signal input password;
     
     // public inputs
     signal input address;
@@ -13,17 +13,17 @@ template ProofOfSecret() {
     signal input nonce;
     
     // output (considered as public inputs)
-    signal output secretHash;
+    signal output passwordHash;
     signal output authHash;
     
-    component secretHasher = Poseidon(1);
-    secretHasher.inputs <== [secret];
-    secretHash <== secretHasher.out;
+    component passwordHasher = Poseidon(1);
+    passwordHasher.inputs <== [password];
+    passwordHash <== passwordHasher.out;
     
     component authHasher = Poseidon(4);
-    authHasher.inputs <== [secret, address, amount, nonce];
+    authHasher.inputs <== [password, address, amount, nonce];
     authHash <== authHasher.out;
     
 }
 
-component main {public [address, amount, nonce]} = ProofOfSecret();
+component main {public [address, amount, nonce]} = SimplePassword();

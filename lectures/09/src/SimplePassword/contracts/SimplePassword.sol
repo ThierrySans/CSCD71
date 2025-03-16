@@ -5,7 +5,7 @@ import "./Groth16Verifier.sol";
 
 // import "hardhat/console.sol";
 
-contract ProofOfSecret {
+contract SimplePassword {
 	
 	Groth16Verifier private immutable verifier;
 	
@@ -20,8 +20,8 @@ contract ProofOfSecret {
 		verifier = _verifier;
     }
 
-    function deposit(uint256 secretHash) payable external {
-		records[secretHash].amount += msg.value;
+    function deposit(uint256 passwordHash) payable external {
+		records[passwordHash].amount += msg.value;
     }
 
     function withdraw(bytes calldata proof) external { 
@@ -32,17 +32,17 @@ contract ProofOfSecret {
 		(bool valid, ) = address(verifier).staticcall(abi.encodeWithSelector(Groth16Verifier.verifyProof.selector, pi_a, pi_b, pi_c, signals));
 		require(valid, "Proof verification failed");
 		// extract parameters
-		uint256 secretHash = signals[0];
+		uint256 passwordHash = signals[0];
 		address addr = address(uint160(signals[2]));
 		uint256 amount = signals[3];
 		uint256 nonce = signals[4];
 		// check and update nonce reuse
-		require(!records[secretHash].nonces[nonce], "nonce has already been used");
-		records[secretHash].nonces[nonce] = true;
+		require(!records[passwordHash].nonces[nonce], "nonce has already been used");
+		records[passwordHash].nonces[nonce] = true;
 		// Check and update amount
 		require(amount>0, "Amount should be greater than 0");
-		require(records[secretHash].amount >= amount, "insufficient balance");
-		records[secretHash].amount -= amount;
+		require(records[passwordHash].amount >= amount, "insufficient balance");
+		records[passwordHash].amount -= amount;
 		// Transfer funds
 		(bool sent, ) = addr.call{value: amount}("");
 		require(sent, "Failed to send Ether");
