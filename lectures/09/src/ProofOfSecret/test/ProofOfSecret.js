@@ -59,7 +59,6 @@ describe("Proof Of Secret", function () {
 		const balance = await proofOfSecret.records(secretHash);
 		expect(balance).to.be.equal(ethers.parseEther("1.0"));
 		
-		// creating baseNonce
 		const nonce = randomBigInt();
 		const amount = ethers.parseEther("0.4");
 		const address = BigInt(bob.address);
