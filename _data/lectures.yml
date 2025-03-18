@@ -50,10 +50,12 @@
 - week: DeFi (part 2)
 
 - week: Scalability
-  # notes:
-  #     Smart Contracts Scalability: 09/CSCD71-Scalability.pdf
+  notes:
+      Privacy: 09/CSCD71-PrivacyAndZKProof.pdf
   
-- week: (guest lecture)
+- week: Scalability
+  notes:
+      Privacy: 10/CSCD71-Scaling.pdf
   
 - week: Security
   readings:

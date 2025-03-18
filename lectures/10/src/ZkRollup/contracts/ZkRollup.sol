@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
 // import "hardhat/console.sol";
 
-contract OptimisticRollup {
+contract ZkRollup {
 
 	using ECDSA for bytes32;
 	using MessageHashUtils for bytes32;
@@ -23,7 +23,6 @@ contract OptimisticRollup {
 
     event Deposit(address indexed user, uint256 amount);
     event Withdrawal(address indexed user, uint256 amount);
-	event Update(bytes32 indexed root, Transaction[] transactions);
 	
     constructor() {}
 
@@ -43,13 +42,19 @@ contract OptimisticRollup {
     }
 
     function update(Transaction[] calldata transactions, bytes32 _root) external {
-		// here we trust the aggregator for verifying the transactions and producing the right root
-		// the comments below are unimplemented
+        for (uint256 i = 0; i < transactions.length; i++) {
+            Transaction calldata txn = transactions[i];
+
+            bytes32 txnHash = keccak256(abi.encodePacked(txn.from, txn.to, txn.amount)).toEthSignedMessageHash();
+			address signer = (txn.from == address(0) || txn.to == address(0))? msg.sender : txn.from;
+			require(txnHash.recover(txn.signature) == signer, "Invalid signature for transaction");
+			
+        }
+		// here we trust the aggregator for producing the right root
 		// in a real optimistic rollup, the coordinator must deposit a stake
-		// there is usually 7 days to verify and challenge whether the root is correct
-		// if incorrect the rollup is rolled back and coordinator stake is slashed
+		// there is usually 7 days to verify and dispute whether the root is correct
+		// if incorrectm stake is slashed
 		root = _root;
-		emit Update(root, transactions);
     }
 }
 
