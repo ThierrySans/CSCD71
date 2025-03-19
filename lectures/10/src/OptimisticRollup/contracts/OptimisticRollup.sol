@@ -1,16 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import {MessageHashUtils} from "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
 // import "hardhat/console.sol";
 
 contract OptimisticRollup {
-
-	using ECDSA for bytes32;
-	using MessageHashUtils for bytes32;
 
     struct Transaction {
         address from;

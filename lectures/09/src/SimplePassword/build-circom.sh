@@ -8,7 +8,7 @@ mkdir zksetup
 circom circuits/SimplePassword.circom --r1cs --wasm -o zksetup/
 
 # Phase 2 (contract specific)
-snarkjs groth16 setup zksetup/SimplePassword.r1cs ../ptau-ceremony/pot14_final.ptau zksetup/SimplePassword.zkey
+snarkjs groth16 setup zksetup/SimplePassword.r1cs ../ptau-data/pot14_final.ptau zksetup/SimplePassword.zkey
 snarkjs zkey export verificationkey zksetup/SimplePassword.zkey zksetup/verification_key.json
 rm -f zksetup/SimplePassword.r1cs
 

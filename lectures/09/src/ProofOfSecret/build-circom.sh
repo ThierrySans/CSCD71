@@ -8,7 +8,7 @@ mkdir zksetup
 circom circuits/ProofOfSecret.circom --r1cs --wasm -o zksetup/
 
 # Phase 2 (contract specific)
-snarkjs groth16 setup zksetup/ProofOfSecret.r1cs ../ptau-ceremony/pot14_final.ptau zksetup/ProofOfSecret.zkey
+snarkjs groth16 setup zksetup/ProofOfSecret.r1cs ../ptau-data/pot14_final.ptau zksetup/ProofOfSecret.zkey
 snarkjs zkey export verificationkey zksetup/ProofOfSecret.zkey zksetup/verification_key.json
 rm -f zksetup/ProofOfSecret.r1cs
 

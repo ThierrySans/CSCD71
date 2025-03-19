@@ -22,6 +22,7 @@ contract NaiveRollup{
 
     event Deposit(address indexed user, uint256 amount);
     event Withdrawal(address indexed user, uint256 amount);
+	event Update(Transaction[] transactions);
 	
     constructor() {}
 
@@ -52,5 +53,6 @@ contract NaiveRollup{
             balances[txn.from] -= txn.amount;
             balances[txn.to] += txn.amount;
         }
+		emit Update(transactions);
     }
 }

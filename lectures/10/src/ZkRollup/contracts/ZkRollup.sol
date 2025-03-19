@@ -1,60 +1,73 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import {MessageHashUtils} from "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
-import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+import "poseidon-solidity/PoseidonT2.sol";
+
+import "./UpdateVerifier.sol";
+import "./RollupVerifier.sol";
 
 // import "hardhat/console.sol";
 
 contract ZkRollup {
 
-	using ECDSA for bytes32;
-	using MessageHashUtils for bytes32;
-
-    struct Transaction {
-        address from;
-		address to;
-		uint256 amount;
-		bytes signature;
-    }
+	UpdateVerifier private immutable updateVerifier;
+	RollupVerifier private immutable rollupVerifier;
 	
-	bytes32 private root;
+	uint256 private root;
 
     event Deposit(address indexed user, uint256 amount);
     event Withdrawal(address indexed user, uint256 amount);
+	event Update(uint256 root);
 	
-    constructor() {}
-
-    function deposit() payable external {
-        emit Deposit(msg.sender, msg.value);
+    constructor(UpdateVerifier _updateVerifier, RollupVerifier _rollupVerifier) {
+		updateVerifier = _updateVerifier;
+		rollupVerifier = _rollupVerifier;
     }
 
-	function verifyProof(address addr, uint256 balance, bytes32[] memory proof) public view returns(bool) {
-		bytes32 leaf = keccak256(bytes.concat(keccak256(abi.encode(addr, balance))));
-		return MerkleProof.verify(proof, root, leaf);
+	function verifyUpdateProof(bytes calldata proof) public view returns(bool, uint256, uint256, uint256, uint256, uint256) {
+		// unwrap the proof (to extract signals)
+		( uint256[2] memory pi_a, uint256[2][2] memory pi_b, uint256[2] memory pi_c, uint256[5] memory signals)
+			= abi.decode(proof, (uint256[2], uint256[2][2], uint256[2], uint256[5]));
+		// check the proof
+		(bool valid, ) = address(updateVerifier).staticcall(abi.encodeWithSelector(UpdateVerifier.verifyProof.selector, pi_a, pi_b, pi_c, signals));
+		return (valid, signals[0], signals[1], signals[2], signals[3], signals[4]);
 	}
 
-    function withdraw(uint256 balance, uint256 amount, bytes32[] memory proof) external {
-		require(balance >= amount, "Insufficient funds");
-		require(verifyProof(msg.sender, balance, proof) , "Invalid proof");
+    function deposit(bytes calldata proof) payable external {
+        (bool valid, uint256 user, uint256 oldBalance, uint256 newBalance, uint256 oldRoot, uint256 newRoot) = verifyUpdateProof(proof);
+		require(valid, "Proof verification failed");
+		require(user == PoseidonT2.hash([uint256(uint160(msg.sender))]));
+		require(newBalance - oldBalance == msg.value, "Deposit amount does not match the balance");
+		require(oldRoot == root, "Invalid root");
+		root = newRoot; 		
+		emit Deposit(msg.sender, msg.value);
+    }
+
+    function withdraw(bytes calldata proof) external {
+        (bool valid, uint256 user, uint256 oldBalance, uint256 newBalance, uint256 oldRoot, uint256 newRoot) = verifyUpdateProof(proof);
+		require(valid, "Proof verification failed");
+		require(user == PoseidonT2.hash([uint256(uint160(msg.sender))]));
+		require(newBalance < oldBalance, "Withdrawal amount should be positive");
+		require(oldRoot == root, "Invalid root");
+		root = newRoot;
+		uint256 amount = oldBalance - newBalance;
+		(bool sent, ) = address(msg.sender).call{value: amount}("");
+		require(sent, "Failed to send Ether");
         emit Withdrawal(msg.sender, amount);
     }
 
-    function update(Transaction[] calldata transactions, bytes32 _root) external {
-        for (uint256 i = 0; i < transactions.length; i++) {
-            Transaction calldata txn = transactions[i];
-
-            bytes32 txnHash = keccak256(abi.encodePacked(txn.from, txn.to, txn.amount)).toEthSignedMessageHash();
-			address signer = (txn.from == address(0) || txn.to == address(0))? msg.sender : txn.from;
-			require(txnHash.recover(txn.signature) == signer, "Invalid signature for transaction");
-			
-        }
-		// here we trust the aggregator for producing the right root
-		// in a real optimistic rollup, the coordinator must deposit a stake
-		// there is usually 7 days to verify and dispute whether the root is correct
-		// if incorrectm stake is slashed
-		root = _root;
+    function update(bytes calldata proof) external {
+		// unwrap the proof (to extract signals)
+		( uint256[2] memory pi_a, uint256[2][2] memory pi_b, uint256[2] memory pi_c, uint256[5] memory signals)
+			= abi.decode(proof, (uint256[2], uint256[2][2], uint256[2], uint256[5]));
+		// check the proof
+		(bool valid, ) = address(rollupVerifier).staticcall(abi.encodeWithSelector(RollupVerifier.verifyProof.selector, pi_a, pi_b, pi_c, signals));
+		require(valid, "Proof verification failed");
+		(uint256 oldRoot, uint256 newRoot) = (signals[3], signals[4]);
+		// check root
+		require(oldRoot == root, "Invalid root");
+		root = newRoot; 		
+		emit Update(root);
     }
 }
 
