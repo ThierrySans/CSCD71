@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "./Groth16Verifier.sol";
+import "./SimpleMixerVerifier.sol";
 
 import "poseidon-solidity/PoseidonT3.sol";
 import "@zk-kit/incremental-merkle-tree.sol/IncrementalBinaryTree.sol";
 
 // import "hardhat/console.sol";
-
-
 
 contract SimpleMixer{
     using IncrementalBinaryTree for IncrementalTreeData;
@@ -16,13 +14,13 @@ contract SimpleMixer{
 	
 	uint256 private immutable depth = 20;
 
-	Groth16Verifier private immutable verifier;
+	SimpleMixerVerifier private immutable verifier;
 	
 	mapping(uint256 => bool) nullifiers;
 	
 	event SecretAdded(uint256 secretHash, uint256 root);
 	
-    constructor(Groth16Verifier _verifier) {
+    constructor(SimpleMixerVerifier _verifier) {
 		verifier = _verifier;
 		tree.init(depth, 0);
     }
@@ -38,7 +36,7 @@ contract SimpleMixer{
 		( uint256[2] memory pi_a, uint256[2][2] memory pi_b, uint256[2] memory pi_c, uint256[4] memory signals)
 			= abi.decode(proof, (uint256[2], uint256[2][2], uint256[2], uint256[4]));
 		// check the proof
-		(bool valid, ) = address(verifier).staticcall(abi.encodeWithSelector(Groth16Verifier.verifyProof.selector, pi_a, pi_b, pi_c, signals));
+		(bool valid, ) = address(verifier).staticcall(abi.encodeWithSelector(SimpleMixerVerifier.verifyProof.selector, pi_a, pi_b, pi_c, signals));
 		require(valid, "Proof verification failed");
 		// extract parameters
 		uint256 root = signals[0];

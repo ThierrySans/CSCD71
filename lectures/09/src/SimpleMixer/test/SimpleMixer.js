@@ -8,9 +8,9 @@ const poseidon = require("poseidon-lite");
 const { PoseidonT3 } = require('poseidon-solidity')
 const { IncrementalMerkleTree } = require("@zk-kit/incremental-merkle-tree");
 
-let wasmFile = path.join(__dirname, "..", "ptau-data", "SimpleMixer_js", "SimpleMixer.wasm");
-let zkeyFile = path.join(__dirname, "..", "ptau-data", "SimpleMixer_0001.zkey");
-const vKey = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "ptau-data", "verification_key.json")));
+let wasmFile = path.join(__dirname, "..", "zksetup", "SimpleMixer_js", "SimpleMixer.wasm");
+let zkeyFile = path.join(__dirname, "..", "zksetup", "SimpleMixer.zkey");
+const vKey = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "zksetup", "verification_key.json")));
 
 function randomBigInt(){
 	const hexString = Array(32)
@@ -27,7 +27,7 @@ describe("SimpleMixer", function () {
     beforeEach(async function () {
         [owner, alice, bob] = await ethers.getSigners();
 
-		const Verifier = await ethers.getContractFactory("Groth16Verifier");
+		const Verifier = await ethers.getContractFactory("SimpleMixerVerifier");
 		verifier = await Verifier.deploy();
 		await verifier.waitForDeployment();
 		

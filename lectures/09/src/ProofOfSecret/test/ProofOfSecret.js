@@ -6,9 +6,9 @@ const path = require("path");
 const snarkjs = require("snarkjs");
 const poseidon = require("poseidon-lite");
 
-let wasmFile = path.join(__dirname, "..", "ptau-data", "ProofOfSecret_js", "ProofOfSecret.wasm");
-let zkeyFile = path.join(__dirname, "..", "ptau-data", "ProofOfSecret_0001.zkey");
-const vKey = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "ptau-data", "verification_key.json")));
+let wasmFile = path.join(__dirname, "..", "zksetup", "ProofOfSecret_js", "ProofOfSecret.wasm");
+let zkeyFile = path.join(__dirname, "..", "zksetup", "ProofOfSecret.zkey");
+const vKey = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "zksetup", "verification_key.json")));
 
 function randomBigInt(){
 	const hexString = Array(32)
@@ -24,7 +24,7 @@ describe("Proof Of Secret", function () {
 
     beforeEach(async function () {
         [owner] = await ethers.getSigners();
-		const Verifier = await ethers.getContractFactory("Groth16Verifier");
+		const Verifier = await ethers.getContractFactory("ProofOfSecretVerifier");
 		verifier = await Verifier.deploy();
 		await verifier.waitForDeployment();
     });

@@ -7,9 +7,9 @@ const snarkjs = require("snarkjs");
 const poseidon = require("poseidon-lite");
 const { IncrementalMerkleTree } = require("@zk-kit/incremental-merkle-tree");
 
-let wasmFile = path.join(__dirname, "..", "ptau-data", "ProofOfMembership_js", "ProofOfMembership.wasm");
-let zkeyFile = path.join(__dirname, "..", "ptau-data", "ProofOfMembership_0001.zkey");
-const vKey = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "ptau-data", "verification_key.json")));
+let wasmFile = path.join(__dirname, "..", "zksetup", "ProofOfMembership_js", "ProofOfMembership.wasm");
+let zkeyFile = path.join(__dirname, "..", "zksetup", "ProofOfMembership.zkey");
+const vKey = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "zksetup", "verification_key.json")));
 
 function randomBigInt(){
 	const hexString = Array(32)
@@ -25,7 +25,7 @@ describe("Proof Of Membership", function () {
 
     beforeEach(async function () {
         [owner] = await ethers.getSigners();
-		const Verifier = await ethers.getContractFactory("Groth16Verifier");
+		const Verifier = await ethers.getContractFactory("ProofOfMembershipVerifier");
 		verifier = await Verifier.deploy();
 		await verifier.waitForDeployment();
     });

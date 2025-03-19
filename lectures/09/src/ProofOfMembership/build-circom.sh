@@ -1,16 +1,17 @@
 #!/bin/bash
 
-rm contracts/Groth16Verifier.sol
-rm -Rf ptau-data
-mkdir ptau-data
+rm contracts/ProofOfMembershipVerifier.sol
+rm -Rf zksetup
+mkdir zksetup
 
 # compile circom
-circom circuits/ProofOfMembership.circom --r1cs --wasm -o ptau-data/
+circom circuits/ProofOfMembership.circom --r1cs --wasm -o zksetup/
 
 # Phase 2 (contract specific)
-snarkjs groth16 setup ptau-data/ProofOfMembership.r1cs ../ptau-ceremony/pot14_final.ptau ptau-data/ProofOfMembership_0000.zkey
-snarkjs zkey contribute ptau-data/ProofOfMembership_0000.zkey ptau-data/ProofOfMembership_0001.zkey --name="Proof Of Secret" -v
-snarkjs zkey export verificationkey ptau-data/ProofOfMembership_0001.zkey ptau-data/verification_key.json
+snarkjs groth16 setup zksetup/ProofOfMembership.r1cs ../ptau-ceremony/pot14_final.ptau zksetup/ProofOfMembership.zkey
+snarkjs zkey export verificationkey zksetup/ProofOfMembership.zkey zksetup/verification_key.json
+rm -f zksetup/ProofOfMembership.r1cs
 
 # Generate solidty contract
-snarkjs zkey export solidityverifier ptau-data/ProofOfMembership_0001.zkey contracts/Groth16Verifier.sol
+snarkjs zkey export solidityverifier zksetup/ProofOfMembership.zkey contracts/ProofOfMembershipVerifier.sol
+sed -i "" "s/contract Groth16Verifier/contract ProofOfMembershipVerifier/" contracts/ProofOfMembershipVerifier.sol
