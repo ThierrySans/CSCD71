@@ -62,6 +62,8 @@
       Known Attacks: https://ethereum-contract-security-techniques-and-tips.readthedocs.io/en/latest/known_attacks/
       Smart Contract Auditing, Assembly, Security, and DeFi: https://github.com/Cyfrin/security-and-auditing-full-course-s23
       The Ethernaut: https://ethernaut.openzeppelin.com/
+  notes:
+      Privacy: 11/CSCD71-SmartContractSecurity.pdf
 
 - week: Project Presentations 
 
