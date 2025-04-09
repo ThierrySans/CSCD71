@@ -49,13 +49,13 @@
 
 - week: DeFi (part 2)
 
-- week: Scalability
+- week: Privacy
   notes:
       Privacy: 09/CSCD71-PrivacyAndZKProof.pdf
   
 - week: Scalability
   notes:
-      Privacy: 10/CSCD71-Scaling.pdf
+      Scalability: 10/CSCD71-Scaling.pdf
   
 - week: Security
   readings:
@@ -63,7 +63,7 @@
       Smart Contract Auditing, Assembly, Security, and DeFi: https://github.com/Cyfrin/security-and-auditing-full-course-s23
       The Ethernaut: https://ethernaut.openzeppelin.com/
   notes:
-      Privacy: 11/CSCD71-SmartContractSecurity.pdf
+      Security: 11/CSCD71-SmartContractSecurity.pdf
 
 - week: Project Presentations 
 
